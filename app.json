@@ -6,6 +6,18 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "ImageClassifier",
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/CircularStd-Black.otf"
+          ]
+        }
+      ],
+      "expo-router"
+    ],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
