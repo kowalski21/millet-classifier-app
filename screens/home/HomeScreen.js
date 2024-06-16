@@ -6,7 +6,7 @@ import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 const HomeScreen = () => {
   const handleLogout = () => {
     // router.replace("/logout");
-    router.navigate("/logout");
+    router.navigate("/classify");
   };
   return (
     <View className="flex-1 pt-16 items-center px-8 bg-orange-500">
@@ -16,18 +16,21 @@ const HomeScreen = () => {
       <Text className="text-white text-2xl font-bold text-center font-cbold mb-2">Image Classifier</Text>
 
       <View className="flex flex-row gap-4 font-cbold">
-        <TouchableOpacity className="bg-white rounded-xl p-4 mt-auto mb-8 flex flex-row items-center cursor-pointer">
-          <Ionicons name="cloud-upload" size={24} color="black" />
-          <Text className="text-gray-600 text-center font-cbold"> Upload</Text>
-        </TouchableOpacity>
         <TouchableOpacity
+          onPress={handleLogout}
+          className="bg-white rounded-xl p-4 mt-auto mb-8 flex flex-row items-center cursor-pointer"
+        >
+          <Ionicons name="cloud-upload" size={24} color="black" />
+          <Text className="text-gray-600 text-center font-cbold"> Get Started</Text>
+        </TouchableOpacity>
+        {/* <TouchableOpacity
           onPress={handleLogout}
           className="bg-white rounded-xl p-4 mt-auto mb-8 flex flex-row items-center cursor-pointer"
         >
           <MaterialIcons name="logout" size={24} color="black" />
 
           <Text className="text-gray-600 text-center font-cbold"> Logout</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
