@@ -5,11 +5,11 @@ const LoginScreen = () => {
   return (
     <View className="flex-1 p-8 pt-5">
       <View className="items-center mb-8">
-        <Image
+        {/* <Image
           resizeMode="cover"
           source={require("/Users/kowalski/Code/mobile-apps/ImageClassifier/assets/acess_account.png")}
           className="w-full h-64 rounded-xl"
-        />
+        /> */}
       </View>
       <Text className="text-3xl font-bold text-center mb-4">Login</Text>
       <Text className="text-lg mb-0 font-semibold">Let’s Get Started</Text>
