@@ -2,7 +2,7 @@ const { create } = require("apisauce");
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const client = create({
-  baseURL: "http://localhost:8001",
+  baseURL: process.env.EXPO_PUBLIC_API_URL,
 });
 
 const uploadImage = async (name, uri, mimeType) => {
