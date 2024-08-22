@@ -5,7 +5,7 @@ import { Ionicons, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 const username = "kowalski" !== "dev";
 const TabLayout = () => {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "#D97703" }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: "#092c31" }}>
       <Tabs.Screen
         name="index"
         options={{

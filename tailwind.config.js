@@ -5,6 +5,9 @@ module.exports = {
   content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        customGreen: "#092c31",
+      },
       fontFamily: {
         cregular: ["CircularStd-Book", "sans-serif"],
         cbold: ["CircularStd-Bold", "sans-serif"],

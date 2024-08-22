@@ -126,22 +126,22 @@ const UploadScreen = () => {
 
         {image && result && (
           <View className="flex justify-center items-center mt-4">
-            <FontAwesome name="refresh" size={32} color="#D97706" onPress={handleRefresh} />
+            <FontAwesome name="refresh" size={32} color="#092c31" onPress={handleRefresh} />
           </View>
         )}
 
         <View className="flex flex-row justify-center gap-2 mt-4">
-          <TouchableOpacity onPress={pickImage} className="bg-orange-500 rounded-md p-4 mt-6 w-full basis-1/2">
+          <TouchableOpacity onPress={pickImage} className="bg-customGreen rounded-md p-4 mt-6 w-full basis-1/2">
             <Text className="text-center text-white font-cbold ">Upload</Text>
           </TouchableOpacity>
 
           {image && (
             <TouchableOpacity
               onPress={handleClassify}
-              className="bg-orange-500 rounded-md flex items-center justify-center p-4 mt-6 w-full basis-1/2"
+              className="bg-customGreen rounded-md flex items-center justify-center p-4 mt-6 w-full basis-1/2"
             >
               <Text className="text-white font-cbold">
-                {loading ? <ActivityIndicator color="#0000ff" /> : "Classify"}
+                {loading ? <ActivityIndicator color="#ffffff" /> : "Classify"}
               </Text>
             </TouchableOpacity>
           )}
