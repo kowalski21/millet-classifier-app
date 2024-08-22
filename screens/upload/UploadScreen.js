@@ -2,8 +2,9 @@ import { View, Text, TouchableOpacity, Image, Switch, Pressable, ActivityIndicat
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { FontAwesome } from "@expo/vector-icons";
-import { utils_classify } from "../../lib";
-
+import { storePayloadInPredictions, utils_classify } from "../../lib";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as FileSystem from "expo-file-system";
 const classifyImage = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -25,22 +26,49 @@ const UploadScreen = () => {
   };
 
   const handleClassify = async () => {
+    let payload = {
+      isError: false,
+    };
+    const secondsSinceEpoch = Math.floor(new Date().getTime() / 1000);
+    // console.log(`Testing`);
     let extension = image.split(".")[1];
-    const imageName = `new_image_ai.${extension}`;
+    const imageName = `millet_image_${secondsSinceEpoch}.${extension}`;
+    // console.log(imageName);
     const [data, error] = await utils_classify(imageName, image, mime);
     // console.log({ data, error });
 
     setResult(null);
     setLoading(true);
+    payload.timestamp = new Date().toISOString();
+    try {
+      let imagePath = `${FileSystem.documentDirectory}${imageName}`;
+      // console.log(imagePath);
+      await FileSystem.copyAsync({
+        from: image,
+        to: imagePath,
+      });
+      payload.imageUri = imagePath;
+
+      console.log(`File has been copied`);
+    } catch (error) {
+      console.log(error);
+    }
+
     const response = await classifyImage();
     if (error) {
+      payload.isError = true;
+      payload.message = error;
       setResult({ data: error, isError: true });
     } else {
+      // console.log(data);
+      payload.message = data["Mapped Class"];
       setResult({ data: data, isError: false });
     }
-    console.log(response);
+    // console.log(response);
     setLoading(false);
     // setResult();
+    // console.log(payload);
+    storePayloadInPredictions(payload);
   };
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -62,7 +90,8 @@ const UploadScreen = () => {
   };
   return (
     <View className="flex flex-col">
-      {/* {JSON.stringify(image)} */}
+      {/* <Text>{JSON.stringify(image)}</Text> */}
+
       {/* {JSON.stringify({ name })} */}
       <View className="pt-58 px-8 mt-8">
         {image ? (

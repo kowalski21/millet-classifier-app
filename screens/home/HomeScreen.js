@@ -12,7 +12,7 @@ const HomeScreen = () => {
     <View className="flex-1 pt-16 items-center px-8 bg-orange-500">
       <Image resizeMode="cover" source={require("../../assets/acess_account.png")} className="w-full h-80 rounded-xl" />
       <Text className="text-white text-3xl  text-center mt-8 mb-2 font-cbold">Welcome to</Text>
-      <Text className="text-gray-200 text-4xl underline font-cbold text-center mb-2"> AI</Text>
+      <Text className="text-gray-200 text-4xl underline font-cbold text-center mb-2"> Millet</Text>
       <Text className="text-white text-2xl font-bold text-center font-cbold mb-2">Image Classifier</Text>
 
       <View className="flex flex-row gap-4 font-cbold">

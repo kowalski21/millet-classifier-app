@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { Ionicons, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+const username = "kowalski" !== "dev";
 const TabLayout = () => {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: "#D97703" }}>
@@ -18,6 +19,20 @@ const TabLayout = () => {
         options={{
           title: "Upload/Classify",
           tabBarIcon: ({ color }) => <Ionicons name="cloud-upload" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="dashboard"
+        options={{
+          title: "Dashboard",
+          tabBarIcon: ({ color }) => <MaterialIcons name="space-dashboard" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="info"
+        options={{
+          title: "About",
+          tabBarIcon: ({ color }) => <Ionicons name="information-circle" size={24} color={color} />,
         }}
       />
       <Tabs.Screen

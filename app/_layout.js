@@ -1,5 +1,6 @@
 import { useFonts } from "expo-font";
 import { Stack, SplashScreen } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
 const AppLayout = () => {
   const [fontsLoaded, error] = useFonts({
@@ -17,6 +18,22 @@ const AppLayout = () => {
     "CircularStd-Medium": require("../assets/fonts/CircularStd-Medium.otf"),
     "CircularStd-Light": require("../assets/fonts/CircularStd-Light.otf"),
   });
+
+  useEffect(() => {
+    const initializePredictions = async () => {
+      try {
+        const predictions = await AsyncStorage.getItem("predictions");
+        if (predictions === null) {
+          // Initialize with an empty array if the key doesn't exist
+          await AsyncStorage.setItem("predictions", JSON.stringify([]));
+        }
+      } catch (error) {
+        console.error("Error checking/initializing predictions key:", error);
+      }
+    };
+
+    initializePredictions();
+  }, []);
   useEffect(() => {
     if (error) throw error;
 
