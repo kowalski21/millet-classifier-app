@@ -32,6 +32,7 @@ const TabLayout = () => {
         name="info"
         options={{
           title: "About",
+          href: null,
           tabBarIcon: ({ color }) => <Ionicons name="information-circle" size={24} color={color} />,
         }}
       />
