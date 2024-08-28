@@ -1,12 +1,12 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import UploadScreen from "../../screens/upload";
 
 const ImageClassifyScreen = () => {
   return (
-    <View className="flex-1">
+    <ScrollView className="flex-1">
       <UploadScreen />
-    </View>
+    </ScrollView>
   );
 };
 

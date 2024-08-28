@@ -89,7 +89,7 @@ const UploadScreen = () => {
     }
   };
   return (
-    <View className="flex flex-col">
+    <View className="flex flex-col mb-5">
       {/* <Text>{JSON.stringify(image)}</Text> */}
 
       {/* {JSON.stringify({ name })} */}
@@ -98,7 +98,7 @@ const UploadScreen = () => {
           <Image resizeMode="cover" source={{ uri: image }} className="w-full h-96 rounded-xl" />
         ) : (
           //   <Text>Hello World</Text>
-          <View className="border-2 border-orange-600 border-dashed h-96 w-full items-center rounded-lg justify-center">
+          <View className="border-2 bg-customGreen  border-dashed h-96 w-full items-center rounded-lg justify-center">
             <Text className="text-lg text-gray-500 font-cbold">Upload Image for Classification</Text>
           </View>
         )}

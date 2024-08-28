@@ -1,11 +1,10 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
 import { getPredictions } from "../../lib";
 import { DateTime } from "luxon";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const formatDt = (timestamp) => {
   const dt = DateTime.fromISO(timestamp);
-  //   console.log(dt.toLocaleString(DateTime.DATETIME_FULL));
   return dt.toLocaleString(DateTime.DATETIME_FULL);
 };
 const DashboardPage = () => {
@@ -26,11 +25,24 @@ const DashboardPage = () => {
     setPredictions(results);
     setLoading(false);
   };
+
+  const clearPredictions = async () => {
+    console.log(`Predictions has been cleared`);
+    // AsyncStorage.removeItem("")
+    await AsyncStorage.setItem("predictions", JSON.stringify([]));
+    setPredictions([]);
+  };
   return (
     <View className="flex-1 bg-slate-100 px-5">
-      <Text className="text-xl mb-5 font-cbold mt-5">Number of Predictions: {predictions.length}</Text>
+      <Text className="text-xl mb-2 font-cbold mt-5">Number of Predictions: {predictions.length}</Text>
+      {predictions.length > 0 && (
+        <TouchableOpacity className="bg-customGreen rounded-md w-32  " onPress={clearPredictions}>
+          <Text className="text-center text-white text-xs font-cbold p-2">Clear Predictions</Text>
+        </TouchableOpacity>
+      )}
 
       <FlatList
+        className="mt-5"
         refreshing={loading}
         onRefresh={async () => await triggerRefresh()}
         data={predictions}
